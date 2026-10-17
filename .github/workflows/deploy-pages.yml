@@ -1,0 +1,63 @@
+name: Deploy approved dōtapp root build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Prepare exact approved root build
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat deploy-artifacts/dotapp-root.zip.part-* > deploy-artifacts/dotapp-root.zip
+          sha256sum -c deploy-artifacts/dotapp-root.sha256
+          mkdir -p site
+          unzip -oq deploy-artifacts/dotapp-root.zip -d site
+          python3 - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          root = Path('site')
+          expected = json.loads(Path('deploy-artifacts/root-file-hashes.json').read_text())
+          actual = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in root.rglob('*') if p.is_file()}
+          assert actual == expected, 'Approved build file hashes differ'
+          manifest = json.loads((root / 'manifest.json').read_text())
+          assert all(manifest[k] == '/' for k in ('id', 'start_url', 'scope'))
+          assert '<base href="/">' in (root / 'index.html').read_text()
+          assert not (root / 'CNAME').exists()
+          assert 'DOTAPP_BACKUP_V1' in (root / 'backup_transfer.js').read_text()
+          worker = (root / 'flutter_service_worker.js').read_text()
+          resources = json.loads(re.search(r'const RESOURCES = (\{[^\n]+\});', worker)[1])
+          for name, digest in resources.items():
+              target = root / ('index.html' if name == '/' else name)
+              assert hashlib.md5(target.read_bytes()).hexdigest() == digest, name
+          for name in ('main.dart.js', 'admin_bridge.js', 'admin_preview.js', 'app_messages.js'):
+              assert (root / name).stat().st_size > 0
+          print('Approved root build verified: 37 files; manifest, worker and backup PASS')
+          PY
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
