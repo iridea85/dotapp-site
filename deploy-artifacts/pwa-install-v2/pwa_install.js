@@ -3,20 +3,19 @@
   'use strict';
   const w=window;if(location.origin!=='https://do-tapp.it')return;
   const VERSION='dotapp-pwa-install-v2', RELOAD='dotapp_pwa_control_reload_v2';
-  let deferredPrompt=null,registration=null,active=false,controlled=false,waitingSinceReady=false,installing=false,installedEvent=false,registrationError=null,controlTimer,promptTimer,button,badge;
+  let deferredPrompt=null,registration=null,active=false,controlled=false,waitingSinceReady=false,installing=false,installedEvent=false,registrationError=null,controlTimer,promptTimer,button;
   const subscribers=new Set();
   function standalone(){return !!w.matchMedia?.('(display-mode: standalone)').matches || navigator.standalone===true;}
   function installed(){return installedEvent||standalone();}
   function state(){return {version:VERSION,secure:w.isSecureContext===true,scope:registration?.scope||null,active,controlled,workerState:registration?.active?.state||null,controllerState:navigator.serviceWorker?.controller?.state||null,promptObserved:!!deferredPrompt,ready:active&&controlled,available:!!deferredPrompt&&active&&controlled&&!installed(),installed:installed(),installing,pending:!registrationError&&!waitingSinceReady&&!installed(),error:registrationError};}
   function paint(){
     const s=state(),owned=!!document.getElementById('dotapp-transfer-v2')?.isConnected;
-    if(!s.available||owned){button?.remove();button=null;}
-    else if(!button){button=document.createElement('button');button.type='button';button.textContent='INSTALLA DŌTAPP';button.id='dotapp-native-install';button.style.cssText='position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:99999;padding:12px;border:1px solid #ddd;border-radius:12px;background:white;color:#6e5578;font:700 14px system-ui;cursor:pointer';button.onclick=install;document.body.append(button);}
-    if(!s.installed||owned){badge?.remove();badge=null;}
-    else if(!badge){badge=document.createElement('div');badge.id='dotapp-installed';badge.textContent=installedEvent?'✅ DŌTAPP INSTALLATO — I tuoi dati sono già pronti.':'✅ DŌTAPP È INSTALLATO';badge.style.cssText='position:fixed;top:10px;right:12px;z-index:99999;padding:12px;border-radius:12px;background:#f0f8f3;color:#355743;font:14px system-ui';document.body.append(badge);}
+    if(!s.available||owned||w.dotappInstallLayoutRegistered){button?.remove();button=null;}
+    else if(!button){button=document.createElement('button');button.type='button';button.textContent='↓ Installa';button.id='dotapp-native-install';button.style.cssText='position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:99999;min-height:48px;padding:4px 8px;border:1px solid #ddd;border-radius:12px;background:white;color:#6e5578;font:700 13px system-ui;cursor:pointer';button.onclick=install;document.body.append(button);}
   }
   function publish(){
     const s=state();paint();
+    try{w.dotappInstallLayoutChanged?.(s.available&&!document.getElementById('dotapp-transfer-v2')?.isConnected);}catch(_){}
     document.documentElement?.setAttribute('data-dotapp-pwa-state',JSON.stringify(s));
     console.info('[dōtapp PWA]',JSON.stringify(s));
     for(const fn of subscribers)try{fn(s);}catch(_){}

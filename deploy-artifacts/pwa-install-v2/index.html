@@ -21,12 +21,20 @@
   <title>dōtapp</title>
 </head>
 <body>
-  <div id="dotapp-launch" role="status" style="position:fixed;inset:0;display:grid;place-content:center;text-align:center;background:#F7F5F7;color:#60476b;font-family:system-ui,sans-serif">
-    <strong style="font-size:32px">dōtapp</strong>
-    <p style="margin:10px 16px;font-size:15px">La tua scorta di oli, organizzata.</p>
+  <style>
+    html,body { margin:0; min-height:100%; }
+    #dotapp-launch { position:fixed; inset:0; z-index:99998; display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box; width:100%; min-height:100%; padding:24px; background:#6e5578; color:#fff; font-family:system-ui,sans-serif; text-align:center; }
+    #dotapp-launch .dotapp-splash-heart { display:block; width:clamp(156px,47vw,248px); height:auto; flex:none; overflow:visible; }
+    #dotapp-launch .dotapp-splash-name { display:block; margin-top:26px; font-size:clamp(32px,9vw,42px); font-weight:600; line-height:1.2; letter-spacing:.01em; }
+  </style>
+  <div id="dotapp-launch" role="status" aria-label="Avvio dōtapp">
+    <svg class="dotapp-splash-heart" viewBox="128 108 256 232" aria-hidden="true" focusable="false">
+      <path fill="#fff" d="M256 330 C231 309 132 249 132 183 C132 143 159 116 196 116 C222 116 241 130 256 150 C271 130 290 116 316 116 C353 116 380 143 380 183 C380 249 281 309 256 330 Z"/>
+    </svg>
+    <strong class="dotapp-splash-name">dōtapp</strong>
   </div>
   <script>window.addEventListener('flutter-first-frame', () => document.getElementById('dotapp-launch')?.remove(), {once:true});</script>
-  <script src="pwa_install.js?v=dotapp-pwa-install-v2"></script>
+  <script src="pwa_install_nav_v3.js?v=dotapp-nav-v3"></script>
   <!-- OCR locale nel browser. Il motore viene caricato solo quando l’utente avvia una scansione. -->
   <script>
     let _tesseractLoader = null;
@@ -226,7 +234,7 @@
     const title=document.createElement('strong');title.textContent='dōtapp';splash.append(title);
     const text=document.createElement('p');text.textContent='L’app non si è ancora avviata. I tuoi dati sono conservati.';splash.append(text);
     const retry=document.createElement('button');retry.textContent='RIPROVA APERTURA';retry.type='button';
-    retry.style.cssText='font:inherit;padding:14px;border:0;border-radius:12px;background:#6e5578;color:white;margin:16px';
+    retry.style.cssText='font:inherit;padding:14px;border:0;border-radius:12px;background:white;color:#6e5578;margin:16px';
     retry.onclick=()=>location.reload();splash.append(retry);
   }
   w.dotappApplicationBootError=loadError;
@@ -238,7 +246,7 @@
       const splash=document.getElementById('dotapp-launch');if(splash){splash.replaceChildren();const t=document.createElement('p');t.textContent='Completa il ripristino dei dati precedenti.';splash.append(t);const b=document.createElement('button');b.textContent='RIPRISTINA DATI PRECEDENTI';b.onclick=()=>w.dotappBackup?.open();splash.append(b);}return;
     }}catch(_){}
     started=true;
-    try{const s=document.createElement('script');s.src='flutter_bootstrap_pwa_v2.js?v=dotapp-pwa-install-v2';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
+    try{const s=document.createElement('script');s.src='flutter_bootstrap_nav_v3.js?v=dotapp-nav-v3';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
   };
   // A missing, blocked or broken migration script cannot leave the normal app at the splash.
   function fallback(){if(!w.dotappMigrationManaged)w.dotappStartApplication();}

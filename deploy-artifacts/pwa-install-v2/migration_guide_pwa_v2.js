@@ -119,7 +119,7 @@
   });
   w.addEventListener('appinstalled',()=>{if(w.dotappPwaInstall)return;installSeen=true;installEvent=null;if(successData && !closed)installedScreen();});
   function start() {
-    if(isNew() && completedTransfer()){w.dotappMigrationOwnsInstall=true;if(isTransfer)clearNonce();launchApp();renderSuccess(true);return;}
+    if(isNew() && completedTransfer()){w.dotappMigrationOwnsInstall=true;if(isTransfer)clearNonce();launchApp();if(installed()){closed=true;return;}renderSuccess(true);return;}
     if(isTransfer){w.dotappMigrationOwnsInstall=true;recipient=protocol.receiver({w,storage:localStorage,api,config,token:match[1],onState:receiverState});recipient.begin();w.dotappMigrationManaged=true;return;}
     launchApp();
     if(!isLegacy())return;
