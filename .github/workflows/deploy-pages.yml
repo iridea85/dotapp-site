@@ -34,6 +34,8 @@ jobs:
           unzip -oq deploy-artifacts/dotapp-root.zip -d site
           sha256sum -c deploy-artifacts/v47-migration.sha256
           cp -R deploy-artifacts/v47-migration/. site/
+          sha256sum -c deploy-artifacts/pwa-install-v2.sha256
+          cp -R deploy-artifacts/pwa-install-v2/. site/
           python3 - <<'PY'
           import hashlib, json, re
           from pathlib import Path
@@ -63,3 +65,4 @@ jobs:
       - name: Deploy Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
