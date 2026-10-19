@@ -5,14 +5,14 @@
   "flutter.js": "e3081edda6d2ee9064d700a98f7ba8bb634aea05d735980272ff8d2179e48016",
   "admin_preview.js": "cef15bf1efc62f415f534bace231c7d5851f57a25780a70a510becdea2b5a5b8",
   "backup_transfer.js": "cbbf9c1126a5ceaf72ee3d30c3a6703672b2398ccb3d2cfb1fc5087aec19c245",
-  "flutter_bootstrap.js": "06f7a3befcaefd3acb138b2b899be1255c045e8aae905d896caca30f5a822e0a",
-  "flutter_service_worker.js": "a64c46d27b13bf6ecaa9172190e2d061acc5aee81bd3f302c2a16059622eff19",
+  "flutter_bootstrap.js": "46e3567e8f11ad1fee283860eb5bf7050791c48dcfdc2c0f10d6172cc711a53e",
+  "flutter_service_worker.js": "aa5869e026fb81540a564137e698c620ec903fb4db1fabc8af9b36f0dad4c415",
   "main.dart.js": "f59361f9bf8b86aba25b0b3d97e5353090c982e4c57b7a03512118d913a66f0b",
   "voice_bridge.js": "961e088b5fc0a231e3d0b8d634853ba835f68e30a1601785968134115cb55ddc",
   "admin_bridge.js": "077801c69b17a1532bcc97d7a05e6e4d0c9436ed09a4f34659470a1f17efaf0a",
-  "migration_guide.js": "5e23fdcf4791b8f03f851bf7421ae6806200653909064ee96ae7caf8591675fe",
+  "migration_guide.js": "780efeb9ff21ef2bca03f3b9253f770beb64a465bbad047c09e02a1a4090f553",
   "app_messages.js": "2aba0ca45e4ab2f897f2b15c817e2976aad67e855602a0ad18afd1846e625c32",
-  "index.html": "cbad3ecc30eaf2e90b59928dd98b35e7afc814c3ed9b06ce42b211cef6641b6e",
+  "index.html": "2d987a91b21e553bfe2a7addd132d3f2312e7920e533faeb2e16dde7983d817c",
   "assets/NOTICES": "21f1545b58af2612cba1c0f9161a74508be7b4f42c4d2a501848d2a9aba52735",
   "assets/AssetManifest.bin.json": "8ad086db7df522bd04220fb1f75c1eb17ba0e1a65ec278cfae63c7f6e39d5473",
   "assets/AssetManifest.bin": "4b0091f4b589005a0687cfe8bd97cc6c6f110c0c3eb5427b173e52c951d54da3",
@@ -36,5 +36,7 @@
   "assets/packages/flutter_tesseract_ocr/images/test_11.jpg": "8ddfbd6f577ac95113ff18ec0f36dcefa157b6760650fe7d87daf67d7f7795b4",
   "canvaskit/chromium/canvaskit.wasm": "5e1f801de136a593d29c555b3c8dea235e761e59a1b370a1a4dba684cb80278a",
   "canvaskit/chromium/canvaskit.js": "c4513441303e717ea14bf60814727bc994ce4381188e4b4c0b02a003885d1df7",
-  "canvaskit/chromium/canvaskit.js.symbols": "eceb9c53341eca8fd2449b10049ce5f98d7b1aa8cd60dd168657591f5daac448"
+  "canvaskit/chromium/canvaskit.js.symbols": "eceb9c53341eca8fd2449b10049ce5f98d7b1aa8cd60dd168657591f5daac448",
+  "transfer_protocol.js": "85455f4ee41f3c628d4cd0fbc6db75f2264f89f5f4438960a7ebc94b630f6615",
+  "transfer_config.js": "83aec0a14de88cc3cde110d70f25bafa78056b77006a805dfe0b52d2f75b441e"
 }
