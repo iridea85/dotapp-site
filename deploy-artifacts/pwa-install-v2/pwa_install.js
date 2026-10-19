@@ -7,7 +7,7 @@
   const subscribers=new Set();
   function standalone(){return !!w.matchMedia?.('(display-mode: standalone)').matches || navigator.standalone===true;}
   function installed(){return installedEvent||standalone();}
-  function state(){return {version:VERSION,secure:w.isSecureContext===true,scope:registration?.scope||null,active,controlled,ready:active&&controlled,available:!!deferredPrompt&&active&&controlled&&!installed(),installed:installed(),installing,pending:!registrationError&&!waitingSinceReady&&!installed(),error:registrationError};}
+  function state(){return {version:VERSION,secure:w.isSecureContext===true,scope:registration?.scope||null,active,controlled,workerState:registration?.active?.state||null,controllerState:navigator.serviceWorker?.controller?.state||null,promptObserved:!!deferredPrompt,ready:active&&controlled,available:!!deferredPrompt&&active&&controlled&&!installed(),installed:installed(),installing,pending:!registrationError&&!waitingSinceReady&&!installed(),error:registrationError};}
   function paint(){
     const s=state(),owned=!!document.getElementById('dotapp-transfer-v2')?.isConnected;
     if(!s.available||owned){button?.remove();button=null;}
@@ -24,9 +24,10 @@
   function controller(){const c=navigator.serviceWorker?.controller;return !!c && c.state==='activated' && new URL(c.scriptURL,location.href).origin===location.origin && new URL(c.scriptURL,location.href).pathname==='/flutter_service_worker.js';}
   function checkControl(){
     controlled=controller();
-    if(controlled){w.clearTimeout(controlTimer);if(active&&!promptTimer&&!installed())promptTimer=w.setTimeout(()=>{waitingSinceReady=true;publish();},30000);}
+    if(controlled){w.clearTimeout(controlTimer);controlTimer=null;if(active&&!promptTimer&&!installed())promptTimer=w.setTimeout(()=>{waitingSinceReady=true;publish();},30000);}
     publish();
   }
+  function watchController(){navigator.serviceWorker?.controller?.addEventListener?.('statechange',checkControl);checkControl();}
   function maybeReload(){
     if(!active||controller()||registration?.scope!==location.origin+'/')return;
     // A transfer is never interrupted. Its existing success flag is the only migration value read.
@@ -48,7 +49,7 @@
         const change=()=>{if(worker.state==='activated'){worker.removeEventListener('statechange',change);resolve();}else if(worker.state==='redundant'){worker.removeEventListener('statechange',change);reject(Error('Attivazione service worker non riuscita.'));}};
         worker.addEventListener('statechange',change);change();
       });
-      active=true;checkControl();if(!controlled)controlTimer=w.setTimeout(maybeReload,3000);
+      active=true;watchController();if(!controlled)controlTimer=w.setTimeout(maybeReload,3000);
     }catch(e){registrationError=e?.message||'Preparazione installazione non completata.';publish();}
     return state();
   }
@@ -63,7 +64,7 @@
   }
   w.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredPrompt=event;waitingSinceReady=false;publish();});
   w.addEventListener('appinstalled',()=>{installedEvent=true;deferredPrompt=null;installing=false;w.clearTimeout(promptTimer);publish();});
-  navigator.serviceWorker?.addEventListener('controllerchange',checkControl);
+  navigator.serviceWorker?.addEventListener('controllerchange',watchController);
   w.matchMedia?.('(display-mode: standalone)').addEventListener?.('change',publish);
   w.dotappPwaInstall=Object.freeze({get status(){return state();},install,refresh:publish,subscribe(fn){subscribers.add(fn);return()=>subscribers.delete(fn);}});
   publish();w.dotappPwaInstallReady=prepare();

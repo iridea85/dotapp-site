@@ -1,6 +1,6 @@
 10cba47f3392e1565d07b16161c1922cc42e31a31b818767e9c5ff304029579d  deploy-artifacts/pwa-install-v2/flutter_bootstrap.js
 10cba47f3392e1565d07b16161c1922cc42e31a31b818767e9c5ff304029579d  deploy-artifacts/pwa-install-v2/flutter_bootstrap_pwa_v2.js
-1ce4fbed4ca7f456cfaabaa1395762c8dd750369847f42c7d73b4f0c82850aac  deploy-artifacts/pwa-install-v2/flutter_service_worker.js
+ef1694352c4b81bbc67c230fe1dd53a839839cf9c423bb88094a82589529fae0  deploy-artifacts/pwa-install-v2/flutter_service_worker.js
 cd0fa204a19da779bff00f07c33f56690aaad124f117f841a80c46688aea9e5b  deploy-artifacts/pwa-install-v2/icons/dotapp-192-v2.png
 5c150b105bb691f046e5e43dc796ac2748dbebf99576becaa596f1355fcd8813  deploy-artifacts/pwa-install-v2/icons/dotapp-512-v2.png
 217a480c6ed083651e41c98a15bddc14c572c48d918731146debd6f8cd212cce  deploy-artifacts/pwa-install-v2/icons/dotapp-maskable-192-v2.png
@@ -10,4 +10,4 @@ cd0fa204a19da779bff00f07c33f56690aaad124f117f841a80c46688aea9e5b  deploy-artifac
 57279c72a9747ca30f96e60aa1c3cbeca9fc0c16ecdd1294d8cecab643f1ff57  deploy-artifacts/pwa-install-v2/manifest.json
 81fa56b97daaba7f582e53950842972d9524d69bc3dff74a311b96370aa8d730  deploy-artifacts/pwa-install-v2/migration_guide.js
 81fa56b97daaba7f582e53950842972d9524d69bc3dff74a311b96370aa8d730  deploy-artifacts/pwa-install-v2/migration_guide_pwa_v2.js
-556e96784bcc020fc0ae7c89c81dd279e5b213e09b11ba9bfcd8ee38bb32f9e5  deploy-artifacts/pwa-install-v2/pwa_install.js
+07839217be9c4c2b955b9adf932f0ee522748f27acac093b261ed651d04d741d  deploy-artifacts/pwa-install-v2/pwa_install.js
