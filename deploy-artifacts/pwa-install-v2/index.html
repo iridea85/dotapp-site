@@ -246,7 +246,7 @@
       const splash=document.getElementById('dotapp-launch');if(splash){splash.replaceChildren();const t=document.createElement('p');t.textContent='Completa il ripristino dei dati precedenti.';splash.append(t);const b=document.createElement('button');b.textContent='RIPRISTINA DATI PRECEDENTI';b.onclick=()=>w.dotappBackup?.open();splash.append(b);}return;
     }}catch(_){}
     started=true;
-    try{const s=document.createElement('script');s.src='flutter_bootstrap_recipe_intents_v9.js?v=dotapp-recipe-intents-v9';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
+    try{const s=document.createElement('script');s.src='flutter_bootstrap_settings_v11.js?v=dotapp-settings-v11';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
   };
   // A missing, blocked or broken migration script cannot leave the normal app at the splash.
   function fallback(){if(!w.dotappMigrationManaged)w.dotappStartApplication();}

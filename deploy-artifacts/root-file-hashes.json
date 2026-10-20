@@ -1,7 +1,7 @@
 {
   "flutter_bootstrap_assistant_v8.js": "1203377f459537d27b75c453f0b50c96f689165679304e7239b9fcf182954a99",
   "manifest.json": "57279c72a9747ca30f96e60aa1c3cbeca9fc0c16ecdd1294d8cecab643f1ff57",
-  "index.html": "a3aadb501450bb1979268afd6d984e160ec6eb69e45f0e48806e2a188d2d5360",
+  "index.html": "c22ac74793bcd51fa3cf9e0d8fde745d4f1fe4f59245c67e16dc8d261db6c675",
   "pwa_install_nav_v3.js": "74fac687878b8678cba2426545911ff12bb597ed04a06fb75c926f11040d1d6a",
   "flutter_bootstrap.js": "10cba47f3392e1565d07b16161c1922cc42e31a31b818767e9c5ff304029579d",
   "main_recipe_intents_v9.dart.js": "b3b6cac8a6bb4abc8cc7a23da2a58a738d0d9430d9f9fdaa6d3b1b0b89ec35e3",
@@ -13,7 +13,7 @@
   ".last_build_id": "36eba1ed261abf5db37012677a96fdec8725f842e8017cace1662c91d4d99e90",
   "migration_guide.js": "e73d03ecfec3ecbad58c17edd729b58fceafd1d93a93fa02b8c1bbceb41feccf",
   "flutter_bootstrap_nav_v3.js": "8503436a521f05cf96371ca80a1e89b50bb3da0e198e5835b8c2ba474d9005cc",
-  "flutter_service_worker.js": "907d635d3beb1478fa5c7b2ceaefd7f6e4b3076a368a13c6ec466345071a67f0",
+  "flutter_service_worker.js": "866f205bfa7a720e96e20f6bda716db6085ee8c54a28ccad81bbc2843b3506d2",
   "manifest-pwa-v2.json": "57279c72a9747ca30f96e60aa1c3cbeca9fc0c16ecdd1294d8cecab643f1ff57",
   "admin_bridge.js": "077801c69b17a1532bcc97d7a05e6e4d0c9436ed09a4f34659470a1f17efaf0a",
   "voice_bridge_assistant_v8.js": "d937313a3a46c76b7f78868c6630893666a1debe320123bf4aca204123d29de8",
@@ -57,5 +57,7 @@
   "assets/packages/flutter_tesseract_ocr/images/test_16.jpg": "d68bc6bd2844fbc475c281891b3fb390bbf56c5d61d224f20ea881d2ac34b7e5",
   "canvaskit/chromium/canvaskit.js.symbols": "eceb9c53341eca8fd2449b10049ce5f98d7b1aa8cd60dd168657591f5daac448",
   "canvaskit/chromium/canvaskit.js": "c4513441303e717ea14bf60814727bc994ce4381188e4b4c0b02a003885d1df7",
-  "canvaskit/chromium/canvaskit.wasm": "5e1f801de136a593d29c555b3c8dea235e761e59a1b370a1a4dba684cb80278a"
+  "canvaskit/chromium/canvaskit.wasm": "5e1f801de136a593d29c555b3c8dea235e761e59a1b370a1a4dba684cb80278a",
+  "flutter_bootstrap_settings_v11.js": "9d34a8b1ec1f8e6261666fd2d4a81362242fbde0a11c4450754920bd93b9d6ef",
+  "main_settings_v11.dart.js": "2cd3b94f1897ffa1c6c3081ce2a62d7542102c03ceb6d1c92ae0f856edd3dcb8"
 }
