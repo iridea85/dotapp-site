@@ -58,6 +58,21 @@ jobs:
               assert (root / name).stat().st_size > 0
           print('Approved root build verified: 37 files; manifest, worker and backup PASS')
           PY
+      - name: Publish immutable iPhone bridge candidate 66c6f462
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -R deploy-artifacts/iphone-bridge/. site/
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          import hashlib, json
+          root = Path('site')
+          expected = json.loads(Path('deploy-artifacts/iphone-bridge-files.json').read_text())
+          actual = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in root.rglob('*') if p.is_file()}
+          assert actual == expected, 'iPhone bridge candidate bytes differ'
+          print('Exact candidate 66c6f462 root bundle verified')
+          PYTHON
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -65,4 +80,3 @@ jobs:
       - name: Deploy Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
