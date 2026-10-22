@@ -17,6 +17,11 @@
     close.style='font:inherit;background:none;border:0;padding:8px;color:#60476b';close.onclick=()=>shade.remove();
     const desc=create('p',panel,'Aperture e sessioni per giorno. Non equivalgono a persone uniche.');
     desc.style='font-size:13px;line-height:1.5';
+    const optRow=create('label',panel);optRow.style='display:flex;align-items:center;gap:10px;font-size:13px;margin:12px 0';
+    const opt=create('input',optRow);opt.type='checkbox';
+    try { opt.checked=localStorage.getItem('dotapp-analytics-opt-out')==='1'; } catch (_) {}
+    create('span',optRow,'Non conteggiare le aperture da questo dispositivo');
+    opt.onchange=()=>{try{if(opt.checked)localStorage.setItem('dotapp-analytics-opt-out','1');else localStorage.removeItem('dotapp-analytics-opt-out');}catch(_){} };
     const status=create('p',panel,'');status.setAttribute('role','status');status.style='color:#60476b';
     const form=create('form',panel);form.style='display:grid;gap:12px';
     const email=create('input',form);email.type='email';email.required=true;email.autocomplete='username';
