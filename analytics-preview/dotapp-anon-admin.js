@@ -35,7 +35,7 @@
         });
         const auth=await tokenResponse.json();
         if(!tokenResponse.ok||!auth.access_token)throw Error('Credenziali non valide.');
-        const dataResponse=await fetch(API+'/rest/v1/sd_anon_daily?select=day,opens,sessions&order=day.desc&limit=366',{
+        const dataResponse=await fetch(API+'/rest/v1/sd_anon_daily?select=day,opens,sessions&order=day.desc&limit=3650',{
           credentials:'omit',headers:{apikey:KEY,Authorization:'Bearer '+auth.access_token}
         });
         if(!dataResponse.ok)throw Error('Lettura non autorizzata.');
@@ -44,7 +44,7 @@
         else {
           status.textContent='Dati aggregati, nessun IP o identificatore nel database statistiche.';
           const totals=rows.reduce((a,r)=>[a[0]+Number(r.opens||0),a[1]+Number(r.sessions||0)],[0,0]);
-          const summary=create('p',output,'Totale: '+totals[0]+' aperture · '+totals[1]+' sessioni stimate');
+          const summary=create('p',output,'Periodo disponibile: '+totals[0]+' aperture · '+totals[1]+' sessioni stimate');
           summary.style='font-weight:700;color:#6e5578';
           const table=create('table',output);table.style='width:100%;border-collapse:collapse;font-size:14px';
           const tr=create('tr',table);
