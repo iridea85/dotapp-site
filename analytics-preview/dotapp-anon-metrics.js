@@ -10,6 +10,8 @@
     if (attempted) return;
     if (document.visibilityState === 'prerender' || document.visibilityState === 'hidden') return;
     attempted = true;
+    // Personal opt-out stores only a local boolean; nothing about this device is sent.
+    try { if (localStorage.getItem('dotapp-analytics-opt-out') === '1') return; } catch (_) {}
     const date = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit'
     }).format(new Date());
