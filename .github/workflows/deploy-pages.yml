@@ -73,6 +73,30 @@ jobs:
           assert actual == expected, 'iPhone bridge candidate bytes differ'
           print('Exact candidate 66c6f462 root bundle verified')
           PYTHON
+      - name: Sync external catalog overlay
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p site/catalog
+          cp catalog/scorta-catalog-extra.json site/catalog/scorta-catalog-extra.json
+          python3 - <<'PYCAT'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('site/catalog/scorta-catalog-extra.json').read_text())
+          products=data.get('products', [])
+          assert len(products) >= 61, 'Catalog overlay unexpectedly shrank'
+          names={p.get('name','') for p in products}
+          required={
+            'Harvest Spice',
+            'Stick + Storace PastTense™',
+            'Kit Autumn Exclusives 2026',
+            'Olio di ricino dōTERRA',
+            'dōTERRA Shinrin-Yoku™ Hair & Beard Oil',
+            'Wintergreen',
+          }
+          assert required <= names, f'Missing required catalog products: {sorted(required-names)}'
+          print(f'Catalog overlay verified: {len(products)} entries; required additions PASS')
+          PYCAT
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
