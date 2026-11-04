@@ -17,7 +17,7 @@
     if (!worker || watched.has(worker)) return;
     watched.add(worker);
     worker.addEventListener('statechange', () => {
-      if (worker.state === 'installed' && registration.active) offer(target || release);
+      if (worker.state === 'installed' && registration.active) workerRelease(worker).then(value => { if (value && value !== release) offer(value); });
       if (worker.state === 'activated') { changed = true; if (intent) finish(); }
       if (worker.state === 'redundant') { problem = 'Aggiornamento non completato. Riprova più tardi.'; publish(); }
     });
@@ -28,7 +28,7 @@
       reg.addEventListener('updatefound', () => watchWorker(reg.installing));
     }
     watchWorker(reg.installing); watchWorker(reg.waiting);
-    if (reg.waiting && reg.active) offer(target || release);
+    if (reg.waiting && reg.active) workerRelease(reg.waiting).then(value => { if (value && value !== release) offer(value); });
   }
   async function ensureRegistration() {
     if (!sw) throw Error('Aggiornamento non disponibile in questo browser.');
@@ -53,7 +53,7 @@
         if (remote.release !== release) offer(remote.release);
         const reg = await ensureRegistration();
         await reg.update(); watchWorker(reg.installing);
-        if (reg.waiting && reg.active) offer(remote.release);
+        if (reg.waiting && reg.active && remote.release !== release) offer(remote.release);
         if (!target) phase = 'current';
       } catch (error) { problem = error.message || 'Controllo non riuscito. Riprova più tardi.'; }
       finally { pendingCheck = null; publish(); }
