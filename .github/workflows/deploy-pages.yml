@@ -58,16 +58,6 @@ jobs:
               assert (root / name).stat().st_size > 0
           print('Approved root build verified: 37 files; manifest, worker and backup PASS')
           PY
-      - name: Diagnose popup persistence source
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PYPOP'
-          from pathlib import Path
-          p=Path('site/app_messages.js')
-          print('--- app_messages.js ---')
-          print(p.read_text())
-          PYPOP
       - name: Publish immutable iPhone bridge candidate 66c6f462
         shell: bash
         run: |
