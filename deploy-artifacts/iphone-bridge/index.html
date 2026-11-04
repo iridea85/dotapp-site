@@ -267,6 +267,65 @@
   <script src="installation_intro_v10.js" defer></script>
   <script src="voice_bridge_assistant_v8.js"></script>
   <script src="app_messages.js" defer></script>
+  <script>
+  /* One-shot persistence for release notes/news popups.
+     No inventory, recipe or personal-data keys are read or changed. */
+  (() => {
+    'use strict';
+    const FALLBACK_VERSION = '2026.11.01.shop.1';
+    let catalogVersion = FALLBACK_VERSION;
+    const seenKey = () => 'dotapp_news_seen_v1:' + catalogVersion;
+    const normalize = value => (value || '').toLocaleLowerCase('it-IT');
+    const isNews = text => {
+      const t = normalize(text);
+      return t.includes('novità') || t.includes('nuovi prodotti') ||
+             t.includes('nuovo prodotto') || t.includes("cosa c'è di nuovo");
+    };
+    const dialogRoot = node => {
+      if (!(node instanceof Element)) return null;
+      return node.matches('[role="dialog"],[role="alertdialog"]') ? node :
+        node.closest('[role="dialog"],[role="alertdialog"],[class*="modal"],[class*="popup"],[id*="modal"],[id*="popup"]');
+    };
+    function remember() {
+      try { localStorage.setItem(seenKey(), '1'); } catch (_) {}
+    }
+    function alreadySeen() {
+      try { return localStorage.getItem(seenKey()) === '1'; } catch (_) { return false; }
+    }
+    function handle(root) {
+      if (!(root instanceof Element)) return;
+      const candidates = root.matches?.('[role="dialog"],[role="alertdialog"],[class*="modal"],[class*="popup"],[id*="modal"],[id*="popup"]')
+        ? [root] : [...root.querySelectorAll?.('[role="dialog"],[role="alertdialog"],[class*="modal"],[class*="popup"],[id*="modal"],[id*="popup"]') || []];
+      for (const candidate of candidates) {
+        if (!isNews(candidate.textContent)) continue;
+        if (alreadySeen()) { candidate.remove(); continue; }
+        if (candidate.dataset.dotappNewsBound === '1') continue;
+        candidate.dataset.dotappNewsBound = '1';
+        candidate.addEventListener('click', event => {
+          const control = event.target.closest?.('button,[role="button"],[data-close],[aria-label*="chiud" i],[title*="chiud" i]');
+          if (!control) return;
+          remember();
+          queueMicrotask(() => candidate.remove());
+        }, true);
+      }
+    }
+    async function boot() {
+      try {
+        const response = await fetch('catalog/scorta-catalog-extra.json?_news=' + Date.now(), {cache:'no-store'});
+        if (response.ok) {
+          const data = await response.json();
+          if (typeof data.catalogVersion === 'string' && data.catalogVersion) catalogVersion = data.catalogVersion;
+        }
+      } catch (_) {}
+      handle(document.body);
+      new MutationObserver(records => {
+        for (const record of records) for (const node of record.addedNodes) handle(node);
+      }).observe(document.documentElement, {subtree:true, childList:true});
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true});
+    else boot();
+  })();
+  </script>
   <script src="admin_bridge.js" defer></script>
   <script src="admin_preview_install_intro_v10.js?v=dotapp-install-intro-v10" defer></script>
 
