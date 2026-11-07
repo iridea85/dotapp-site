@@ -1,0 +1,12 @@
+{
+  "source_project": "appgprj_6ad59e39d6dc8191a08a90fd9cf78efd",
+  "baseline_source_commit": "fd9ebcfd13d6282060ccd5c52317bb0312451c82",
+  "production_baseline": "ff325532b1275cd8380995f74326a0497c4d4155",
+  "flutter": "3.35.1",
+  "dart": "3.9.0",
+  "build_command": "flutter build web --release --no-pub --no-tree-shake-icons",
+  "native_header_tests": 44,
+  "button_px": 36,
+  "heart_px": 20,
+  "release": "support-heart-native-20261107-r4"
+}

@@ -1,5 +1,5 @@
 name: Deploy approved dōtapp root build
-# release: support-heart-header-20261107-r3
+# release: support-heart-native-20261107-r4
 # integrity-fix: support-heart-20261107-r1
 on:
   push:
@@ -65,6 +65,10 @@ jobs:
         run: |
           set -euo pipefail
           cp -R deploy-artifacts/iphone-bridge/. site/
+          cat deploy-artifacts/native-support-header/main.dart.js.gz.part-* > deploy-artifacts/native-support-header/main.dart.js.gz
+          sha256sum -c deploy-artifacts/native-support-header/main.dart.js.gz.sha256
+          gzip -dc deploy-artifacts/native-support-header/main.dart.js.gz > site/main_support_header_v4.dart.js
+          cp deploy-artifacts/native-support-header/flutter_bootstrap_support_header_v4.js site/
           python3 - <<'PYTHON'
           from pathlib import Path
           import hashlib, json

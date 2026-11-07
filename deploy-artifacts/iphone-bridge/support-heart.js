@@ -1,11 +1,10 @@
-/* dōtapp support heart — compact header action beside Settings. */
+/* dōtapp support panel; opened exclusively by the native Flutter header action. */
 (() => {
   'use strict';
-  if (window.__dotappSupportHeartHeaderV3) return;
-  window.__dotappSupportHeartHeaderV3 = true;
+  if (window.__dotappSupportPanelNativeV4) return;
+  window.__dotappSupportPanelNativeV4 = true;
 
   const SUPPORT_URL='https://revolut.me/irideaf';
-  const HEART_ID='dotapp-support-heart';
   const DIALOG_ID='dotapp-support-dialog';
 
   function closeDialog(){ document.getElementById(DIALOG_ID)?.remove(); }
@@ -37,36 +36,5 @@
     document.body.append(shade);
   }
 
-  function mount(){
-    if(!document.body || document.getElementById(HEART_ID)) return;
-    const b=document.createElement('button');
-    b.id=HEART_ID;
-    b.type='button';
-    b.setAttribute('aria-label','Sostieni dōtapp');
-    b.title='Sostieni dōtapp';
-    b.textContent='♥';
-    b.style.cssText=[
-      'position:fixed',
-      'top:calc(16px + env(safe-area-inset-top))',
-      'right:150px',
-      'z-index:1000002',
-      'width:38px',
-      'height:38px',
-      'padding:0',
-      'margin:0',
-      'border:0',
-      'border-radius:50%',
-      'background:transparent',
-      'color:#d63b4c',
-      'font:700 26px/38px system-ui,-apple-system,sans-serif',
-      'text-align:center',
-      'cursor:pointer',
-      'filter:drop-shadow(0 1px 1px rgba(0,0,0,.10))'
-    ].join(';');
-    b.onclick=openDialog;
-    document.body.append(b);
-  }
-
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount,{once:true});
-  else mount();
+  window.dotappOpenSupport = openDialog;
 })();

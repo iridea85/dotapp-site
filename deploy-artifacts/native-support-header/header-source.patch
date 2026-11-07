@@ -1,0 +1,78 @@
+diff --git a/flutter_app/lib/global_assistant_ui.dart b/flutter_app/lib/global_assistant_ui.dart
+index 1d7ed03..866e9fa 100644
+--- a/flutter_app/lib/global_assistant_ui.dart
++++ b/flutter_app/lib/global_assistant_ui.dart
+@@ -7,12 +7,37 @@ class _AssistantDraft {
+ }
+ 
+ extension _GlobalAssistant on _HomePageState {
+-  Widget _assistantSettingsMenu() => IconButton(
+-    key: const ValueKey('assistant-settings-menu'),
+-    tooltip: 'Impostazioni',
+-    icon: const Icon(Icons.settings_outlined),
+-    constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+-    onPressed: _openAssistantSettings,
++  Widget _assistantSettingsMenu() => Row(
++    key: const ValueKey('header-settings-actions'),
++    mainAxisSize: MainAxisSize.min,
++    children: [
++      SizedBox.square(
++        dimension: 36,
++        child: IconButton(
++          key: const ValueKey('header-support-heart'),
++          tooltip: 'Sostieni dōtapp',
++          icon: const Icon(Icons.favorite_rounded, size: 20),
++          padding: EdgeInsets.zero,
++          constraints: const BoxConstraints.tightFor(width: 36, height: 36),
++          style: IconButton.styleFrom(
++            foregroundColor: const Color(0xFFD63B4C),
++            backgroundColor: const Color(0xFFFFF0F2),
++            minimumSize: const Size(36, 36),
++            maximumSize: const Size(36, 36),
++            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
++            shape: const CircleBorder(),
++          ),
++          onPressed: SupportBridge.open,
++        ),
++      ),
++      IconButton(
++        key: const ValueKey('assistant-settings-menu'),
++        tooltip: 'Impostazioni',
++        icon: const Icon(Icons.settings_outlined),
++        constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
++        onPressed: _openAssistantSettings,
++      ),
++    ],
+   );
+ 
+   void _openAssistantSettings() {
+diff --git a/flutter_app/lib/main.dart b/flutter_app/lib/main.dart
+index 962a87d..996b5e6 100644
+--- a/flutter_app/lib/main.dart
++++ b/flutter_app/lib/main.dart
+@@ -19,6 +19,7 @@ import 'scan_temp_cleanup.dart';
+ import 'voice_commands.dart';
+ import 'global_commands.dart';
+ import 'settings_bridge.dart';
++import 'support_bridge.dart';
+ import 'voice_input.dart';
+ import 'inventory_order.dart';
+ import 'personal_recipes.dart';
+@@ -2484,6 +2485,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+                         : _tab == 1
+                         ? 'Lista della spesa'
+                         : 'Catalogo doTERRA',
++                    maxLines: 1,
++                    overflow: TextOverflow.ellipsis,
+                     style: const TextStyle(
+                       fontWeight: FontWeight.w900,
+                       letterSpacing: -0.4,
+@@ -2496,6 +2499,8 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+                         : _tab == 0
+                         ? 'La tua scorta di oli, organizzata.'
+                         : shoppingCount.toString() + ' prodotti da comprare',
++                    maxLines: 1,
++                    overflow: TextOverflow.ellipsis,
+                     style: Theme.of(context).textTheme.bodySmall,
+                   ),
+                 ],
