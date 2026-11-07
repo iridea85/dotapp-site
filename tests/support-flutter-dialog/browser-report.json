@@ -1,0 +1,226 @@
+{
+  "productionBaseline": "2e6c4601bba65747fa9daa912527bfd1175defeb",
+  "release": "support-flutter-dialog-20261107-r10",
+  "environment": "Real compiled Flutter web release in Chrome, 390px iframe, synthetic data",
+  "dialogImplementation": "showDialog<void> + AlertDialog, no JavaScript support dialog",
+  "header": "Same 36x36 IconButton, 20px favorite_rounded, same color and position",
+  "firstHeartWithoutSettings": "PASS",
+  "nativeSemanticsObserved": {
+    "identifier": "dotapp-native-support-dialog",
+    "role": "alertdialog",
+    "htmlSupportPopupCount": 0
+  },
+  "verificationMethod": "Actual pointer clicks on the visible IconButton and CHIUDI; each measured open and close visually inspected on the normal CanvasKit surface",
+  "repeat": [
+    {
+      "cycle": 1,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 2,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 3,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 4,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 5,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 6,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 7,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 8,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 9,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    },
+    {
+      "cycle": 10,
+      "opened": true,
+      "closed": true,
+      "settingsNeverOpened": true
+    }
+  ],
+  "perScreen": [
+    {
+      "screen": "Home",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Catalogo",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Scorta",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Lista spesa",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Ricettario",
+      "heart": "PASS",
+      "settings": "PASS"
+    }
+  ],
+  "revolut": {
+    "openedByNativeButton": true,
+    "url": "https://revolut.me/irideaf",
+    "tabId": "8"
+  },
+  "storageStatus": "DATI PASS: 21/21 identici",
+  "storageProof": [
+    {
+      "key": "doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "flutter.DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "test_preference",
+      "identical": true
+    },
+    {
+      "key": "flutter.test_preference",
+      "identical": true
+    },
+    {
+      "key": "IndexedDB",
+      "identical": true
+    }
+  ],
+  "settingsEvents": [
+    {
+      "section": "Home",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Catalogo",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Scorta",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Lista spesa",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Ricettario",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    }
+  ],
+  "supportScriptTags": 0,
+  "oldHtmlSupportPopups": 0,
+  "nativeWidgetAndBackupTests": 9,
+  "physicalPhone": "Not tested"
+}

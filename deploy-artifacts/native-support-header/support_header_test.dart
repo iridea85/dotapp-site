@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:oils_inventory/main.dart';
 import 'package:oils_inventory/settings_bridge.dart';
-import 'package:oils_inventory/support_bridge.dart';
 import 'package:oils_inventory/pwa_install_layout.dart';
 
 void main() {
@@ -26,10 +25,9 @@ void main() {
         addTearDown(t.view.resetPhysicalSize);
         addTearDown(t.view.resetDevicePixelRatio);
         SharedPreferences.setMockInitialValues(seed);
-        var supportOpened = 0, settingsOpened = 0;
-        SupportBridge.testOpen = () => supportOpened++;
+        var settingsOpened = 0;
         SettingsBridge.testOpen = () => settingsOpened++;
-        addTearDown(() {SupportBridge.testOpen = null; SettingsBridge.testOpen = null;});
+        addTearDown(() {SettingsBridge.testOpen = null;});
         await t.pumpWidget(const DoterraStockApp());
         await t.pumpAndSettle();
         PwaInstallLayout.listener!(install);
@@ -65,9 +63,21 @@ void main() {
           expect(icon.icon, Icons.favorite_rounded);
           expect(t.widget<IconButton>(gear).tooltip, 'Impostazioni');
           expect((t.widget<IconButton>(gear).icon as Icon).icon, Icons.settings_outlined);
-          final before = supportOpened;
+          expect(find.byType(AlertDialog), findsNothing);
+          final settingsBeforeSupport = settingsOpened;
           await t.tap(heart);
-          expect(supportOpened, before + 1);
+          await t.pumpAndSettle();
+          expect(find.byKey(const ValueKey('native-support-dialog')), findsOneWidget);
+          expect(find.byType(AlertDialog), findsOneWidget);
+          expect(find.text('Sostieni dōtapp'), findsOneWidget);
+          expect(settingsOpened, settingsBeforeSupport);
+          final dialogIcon = t.widget<Icon>(find.descendant(
+            of: find.byType(AlertDialog), matching: find.byType(Icon)));
+          expect(dialogIcon.icon, Icons.favorite_rounded);
+          expect(dialogIcon.color, const Color(0xFFD63B4C));
+          await t.tap(find.byKey(const ValueKey('native-support-close')));
+          await t.pumpAndSettle();
+          expect(find.byType(AlertDialog), findsNothing);
           final settingsBefore = settingsOpened;
           await t.tap(gear);
           expect(settingsOpened, settingsBefore + 1);
