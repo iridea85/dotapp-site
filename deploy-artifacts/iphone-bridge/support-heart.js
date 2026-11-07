@@ -52,10 +52,33 @@
     return x >= left && x <= right && y >= top && y <= bottom;
   }
 
-  window.addEventListener('click', event => {
-    if (!isNativeHeartTarget(event)) return;
-    openDialog();
-  }, true);
+  // Reliable production fallback for CanvasKit: pointer events reach window capture
+  // even when Flutter consumes the synthetic click. This adds no visual overlay.
+  let heartPointerDown = false;
+  function inNativeHeartSlot(event) {
+    const x = event.clientX, y = event.clientY;
+    if (typeof x !== 'number' || typeof y !== 'number') return false;
+    // Native AppBar actions: 36px heart immediately before the 48px Settings gear.
+    // Reserve the gear hitbox completely; use only the heart's own slot.
+    const rightEdgeOfHeart = innerWidth - 48;
+    const leftEdgeOfHeart = rightEdgeOfHeart - 36;
+    const appBarTop = 30;
+    const appBarBottom = 100;
+    return x >= leftEdgeOfHeart && x < rightEdgeOfHeart && y >= appBarTop && y <= appBarBottom;
+  }
+
+  window.addEventListener('pointerdown', event => {
+    heartPointerDown = inNativeHeartSlot(event);
+  }, {capture:true, passive:true});
+
+  window.addEventListener('pointerup', event => {
+    const activate = heartPointerDown && inNativeHeartSlot(event);
+    heartPointerDown = false;
+    if (!activate) return;
+    setTimeout(openDialog, 0);
+  }, {capture:true, passive:true});
+
+  window.addEventListener('pointercancel', () => { heartPointerDown = false; }, {capture:true, passive:true});
 
   window.dotappOpenSupport = openDialog;
 })();
