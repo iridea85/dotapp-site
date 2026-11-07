@@ -1,0 +1,51 @@
+name: Validate dōtapp support heart preview
+on:
+  push:
+    branches: [preview-support-heart-v1]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate support heart overlay
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check deploy-artifacts/iphone-bridge/support-heart.js
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          root = Path('deploy-artifacts/iphone-bridge')
+          js = (root / 'support-heart.js').read_text()
+          index = (root / 'index.html').read_text()
+          hashes = json.loads(Path('deploy-artifacts/iphone-bridge-files.json').read_text())
+
+          assert 'Sostieni dōtapp' in js
+          assert 'https://revolut.me/irideaf' in js
+          assert '<script src="support-heart.js" defer></script>' in index
+          assert 'position:fixed' in js
+          assert "right:58px" in js
+          assert "top:calc(10px + env(safe-area-inset-top))" in js
+
+          forbidden = [
+              'doterra_inventory_v2',
+              'oils_inventory_v1',
+              'doterra_custom_products_v1',
+              'DOTAPP_BACKUP_V1',
+              'dotapp_backup_restore_journal_v1',
+          ]
+          for key in forbidden:
+              assert key not in js, f'Unexpected personal-data key reference: {key}'
+
+          for name in ('index.html', 'support-heart.js'):
+              digest = hashlib.sha256((root / name).read_bytes()).hexdigest()
+              assert hashes[name] == digest, f'Hash mismatch: {name}'
+
+          print('Support heart preview: PASS')
+          PY
