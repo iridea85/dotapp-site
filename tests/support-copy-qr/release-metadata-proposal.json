@@ -1,0 +1,13 @@
+{
+  "status": "NOT APPLIED",
+  "requiresUserAuthorization": true,
+  "why": "New compiled bundle changes the digest pinned in SW; cached installed clients otherwise keep old shell/bundle",
+  "proposedRelease": "support-copy-qr-20261107-r11",
+  "files": [
+    "index.html",
+    "dotapp-release.json",
+    "flutter_service_worker.js"
+  ],
+  "workerLogicUnchanged": true,
+  "compiledCandidateSHA256": "c0d9691a61cbefa23067a65cf9e11d1fe9ba791a56f6e9a703556203122ddebb"
+}

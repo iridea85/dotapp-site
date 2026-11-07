@@ -1,26 +1,134 @@
 {
   "source_project": "appgprj_6ad59e39d6dc8191a08a90fd9cf78efd",
   "baseline_source_commit": "fd9ebcfd13d6282060ccd5c52317bb0312451c82",
-  "production_baseline": "2e6c4601bba65747fa9daa912527bfd1175defeb",
+  "production_baseline": "70d357374ca6efed60f9857444af738960f5875f",
   "flutter": "3.35.1",
   "dart": "3.9.0",
   "build_command": "flutter build web --release --no-pub --no-tree-shake-icons",
-  "native_header_tests": 9,
+  "native_header_tests": 10,
   "button_px": 36,
   "heart_px": 20,
-  "release": "support-flutter-dialog-20261107-r10",
+  "release": "support-copy-qr-20261107-candidate",
   "bridge_contract": "Removed: no SupportBridge or dotappOpenSupport call",
   "header_graphics_unchanged": true,
-  "support_dialog": "Flutter showDialog<void> + AlertDialog",
-  "external_link": "url_launcher 6.3.2 launchUrl, direct user gesture",
+  "support_dialog": "Same Flutter showDialog/AlertDialog opening, scrollable content; native clipboard and vector QR",
+  "external_link": "UNCHANGED: url_launcher 6.3.2 externalApplication + _blank",
   "real_web_tests": {
-    "heart_without_settings": "PASS",
-    "consecutive_opens": 10,
-    "screens": 5,
-    "settings_independent": "PASS",
-    "revolut": "PASS",
-    "storage_values_identical": 21,
-    "report": "tests/support-flutter-dialog/browser-report.json",
-    "physical_phone": "Not tested"
-  }
+    "environment": "Chrome desktop, real compiled Flutter web on isolated owner-private HTTPS; 390px app iframe",
+    "dialog": "PASS",
+    "heartHeaderAndLaunchCallback": "byte-identical source outside dialog",
+    "clipboard": {
+      "PASS": true,
+      "expected": "https://revolut.me/irideaf",
+      "actual": "https://revolut.me/irideaf",
+      "readMethod": "Independent native navigator.clipboard.readText action on the HTTPS QA harness; no clipboard mocks",
+      "feedback": "Link Revolut copiato"
+    },
+    "qr": {
+      "PASS": true,
+      "renderer": "Flutter CustomPainter, fixed 33x33 matrix with quiet zone",
+      "actualWebScreenshot": "web-dialog-qr.jpg",
+      "decoder": "zxing-cpp 2.3.0",
+      "decoded": "https://revolut.me/irideaf"
+    },
+    "existingSupportButton": {
+      "present": true,
+      "mode": "externalApplication",
+      "target": "_blank",
+      "sourceUnchanged": true,
+      "actualWebLaunch": "Revolut tab was observed in HTTPS predecessor using the same unchanged launch function"
+    },
+    "dataProof": [
+      {
+        "key": "doterra_inventory_v2",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_inventory_v2",
+        "identical": true
+      },
+      {
+        "key": "oils_inventory_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.oils_inventory_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_catalog_shopping_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_catalog_shopping_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_custom_products_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_custom_products_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_personal_recipes_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_personal_recipes_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_inventory_order_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_inventory_order_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_bottom_nav_order_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_bottom_nav_order_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_app_messages_read_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_app_messages_read_v1",
+        "identical": true
+      },
+      {
+        "key": "DOTAPP_BACKUP_V1",
+        "identical": true
+      },
+      {
+        "key": "flutter.DOTAPP_BACKUP_V1",
+        "identical": true
+      },
+      {
+        "key": "test_preference",
+        "identical": true
+      },
+      {
+        "key": "flutter.test_preference",
+        "identical": true
+      },
+      {
+        "key": "IndexedDB",
+        "identical": true
+      }
+    ]
+  },
+  "compiled_sha256": "c0d9691a61cbefa23067a65cf9e11d1fe9ba791a56f6e9a703556203122ddebb",
+  "baseline_recompiled_sha256": "ca3821a637578fa3f1b921c503970ca650b10b9cb4ad65fad07f4736948fec9a",
+  "clipboard": "Flutter Clipboard.setData; exact Revolut URL",
+  "qr": "Fixed 33x33 standard QR matrix including quiet zone; native CustomPainter; rendered QR independently decoded",
+  "deployment": "NOT DEPLOYED: existing service-worker integrity metadata pins old bundle; user forbids worker changes",
+  "test_report": "tests/support-copy-qr/browser-report.json"
 }

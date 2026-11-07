@@ -1,0 +1,16 @@
+   Woah! You appear to be trying to run flutter as root.
+   We strongly recommend running the flutter tool without superuser privileges.
+  /
+📎
+00:00 +0: loading /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_copy_qr_test.dart
+00:00 +0: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_copy_qr_test.dart: copy/QR preserves data and fits Size(320.0, 568.0)
+00:01 +1: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 320.0 install=false
+00:02 +2: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 320.0 install=false
+00:03 +3: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 320.0 install=true
+00:04 +4: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 390.0 install=false
+00:05 +5: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 390.0 install=true
+00:06 +6: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 430.0 install=false
+00:07 +7: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 430.0 install=true
+00:08 +8: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 768.0 install=false
+00:09 +9: /workspace/scratch/ebdb9f1b13f6/dotapp-support-copy-qr/flutter_app/test/support_header_test.dart: native support/settings header in every section 768.0 install=true
+00:11 +10: All tests passed!

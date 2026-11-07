@@ -1,0 +1,7 @@
+{
+  "render": "Real compiled Flutter web, isolated HTTPS, 390px iframe",
+  "decoder": "zxing-cpp 2.3.0",
+  "image": "web-dialog-qr.jpg",
+  "decoded": "https://revolut.me/irideaf",
+  "PASS": true
+}

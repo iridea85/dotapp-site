@@ -1,0 +1,12 @@
+{
+  "encoder": "qrcode 8.2",
+  "decoder": "zxing-cpp 2.3.0",
+  "decoded": "https://revolut.me/irideaf",
+  "pixels": [
+    330,
+    330
+  ],
+  "quietZoneModules": 4,
+  "errorCorrection": "M",
+  "version": 2
+}

@@ -1,10 +1,72 @@
 diff --git a/flutter_app/lib/global_assistant_ui.dart b/flutter_app/lib/global_assistant_ui.dart
-index 1d7ed03..95e6015 100644
+index 1d7ed03..8793ff6 100644
 --- a/flutter_app/lib/global_assistant_ui.dart
 +++ b/flutter_app/lib/global_assistant_ui.dart
-@@ -7,14 +7,94 @@ class _AssistantDraft {
+@@ -6,15 +6,218 @@ class _AssistantDraft {
+   final _VoiceDraft? stock;
  }
  
++// Fixed standards-compliant QR matrix, including four quiet-zone modules.
++const _supportRevolutQrModules = <String>[
++  '000000000000000000000000000000000',
++  '000000000000000000000000000000000',
++  '000000000000000000000000000000000',
++  '000000000000000000000000000000000',
++  '000011111110100001100011111110000',
++  '000010000010110111001010000010000',
++  '000010111010111011110010111010000',
++  '000010111010010001111010111010000',
++  '000010111010111101101010111010000',
++  '000010000010000001101010000010000',
++  '000011111110101010101011111110000',
++  '000000000000000111011000000000000',
++  '000010011111101100101100101110000',
++  '000000110001101011111001111100000',
++  '000001010111100000110010010010000',
++  '000000001001110110100010011110000',
++  '000011001010000010010010000010000',
++  '000011011000001011011100100100000',
++  '000011011110110010010110111110000',
++  '000010010101101100100001011010000',
++  '000010110110110111011111101100000',
++  '000000000000110001011000101100000',
++  '000011111110110101101010100010000',
++  '000010000010100011011000100000000',
++  '000010111010111010111111100000000',
++  '000010111010110100101110000110000',
++  '000010111010001100001100111110000',
++  '000010000010010100000001101110000',
++  '000011111110100110001000010010000',
++  '000000000000000000000000000000000',
++  '000000000000000000000000000000000',
++  '000000000000000000000000000000000',
++  '000000000000000000000000000000000',
++];
++
++class _SupportRevolutQrPainter extends CustomPainter {
++  const _SupportRevolutQrPainter();
++
++  @override
++  void paint(Canvas canvas, Size size) {
++    canvas.drawRect(Offset.zero & size, Paint()..color = Colors.white);
++    final ink = Paint()..color = Colors.black..isAntiAlias = false;
++    final stepX = size.width / _supportRevolutQrModules.length;
++    final stepY = size.height / _supportRevolutQrModules.length;
++    for (var y = 0; y < _supportRevolutQrModules.length; y++) {
++      final row = _supportRevolutQrModules[y];
++      for (var x = 0; x < row.length; x++) {
++        if (row.codeUnitAt(x) == 49) {
++          canvas.drawRect(Rect.fromLTRB(x * stepX, y * stepY,
++            (x + 1) * stepX, (y + 1) * stepY), ink);
++        }
++      }
++    }
++  }
++
++  @override
++  bool shouldRepaint(_SupportRevolutQrPainter oldDelegate) => false;
++}
++
  extension _GlobalAssistant on _HomePageState {
 -  Widget _assistantSettingsMenu() => IconButton(
 -    key: const ValueKey('assistant-settings-menu'),
@@ -46,44 +108,106 @@ index 1d7ed03..95e6015 100644
    );
  
 +  Future<void> _openSupportDialog() async {
++    String? copyFeedback;
 +    await showDialog<void>(
 +      context: context,
-+      builder: (dialogContext) => Semantics(
-+        identifier: 'dotapp-native-support-dialog',
-+        child: AlertDialog(
-+          key: const ValueKey('native-support-dialog'),
-+          semanticLabel: 'Sostieni dōtapp',
-+          icon: Center(
-+            child: Container(
-+              width: 48,
-+              height: 48,
-+              decoration: const BoxDecoration(
-+                color: Color(0xFFFFF0F2),
-+                shape: BoxShape.circle,
++      builder: (dialogContext) => StatefulBuilder(
++        builder: (dialogContext, setDialogState) => Semantics(
++          identifier: 'dotapp-native-support-dialog',
++          child: AlertDialog(
++            key: const ValueKey('native-support-dialog'),
++            semanticLabel: 'Sostieni dōtapp',
++            scrollable: true,
++            icon: Center(
++              child: Container(
++                width: 48,
++                height: 48,
++                decoration: const BoxDecoration(
++                  color: Color(0xFFFFF0F2),
++                  shape: BoxShape.circle,
++                ),
++                child: const Icon(
++                  Icons.favorite_rounded,
++                  size: 26,
++                  color: Color(0xFFD63B4C),
++                ),
 +              ),
-+              child: const Icon(
-+                Icons.favorite_rounded,
-+                size: 26,
-+                color: Color(0xFFD63B4C),
++            ),
++            title: const Text('Sostieni dōtapp'),
++            content: Column(
++              mainAxisSize: MainAxisSize.min,
++              crossAxisAlignment: CrossAxisAlignment.stretch,
++              children: [
++                const Text(
++                  'Se dōtapp ti è utile e vuoi sostenere il progetto, puoi farlo qui. Grazie per il tuo supporto 💜',
++                ),
++                const SizedBox(height: 16),
++                Center(
++                  child: Container(
++                    key: const ValueKey('native-support-qr'),
++                    width: 176,
++                    height: 176,
++                    color: Colors.white,
++                    child: Semantics(
++                      label: 'QR code Revolut',
++                      image: true,
++                      child: const CustomPaint(
++                        painter: _SupportRevolutQrPainter(),
++                      ),
++                    ),
++                  ),
++                ),
++                const SizedBox(height: 8),
++                Text(
++                  'Inquadra il QR da un altro dispositivo',
++                  textAlign: TextAlign.center,
++                  style: Theme.of(dialogContext).textTheme.bodySmall,
++                ),
++                if (copyFeedback != null) ...[
++                  const SizedBox(height: 8),
++                  Semantics(
++                    liveRegion: true,
++                    child: Text(
++                      copyFeedback!,
++                      key: const ValueKey('native-support-copy-feedback'),
++                      textAlign: TextAlign.center,
++                      style: Theme.of(dialogContext).textTheme.bodySmall,
++                    ),
++                  ),
++                ],
++              ],
++            ),
++            actions: [
++              FilledButton(
++                key: const ValueKey('native-support-link'),
++                onPressed: _openSupportLink,
++                child: const Text('SOSTIENI DŌTAPP'),
 +              ),
-+            ),
++              OutlinedButton(
++                key: const ValueKey('native-support-copy'),
++                onPressed: () async {
++                  String feedback;
++                  try {
++                    await Clipboard.setData(
++                      const ClipboardData(text: 'https://revolut.me/irideaf'),
++                    );
++                    feedback = 'Link Revolut copiato';
++                  } catch (_) {
++                    feedback = 'Copia non riuscita. Riprova.';
++                  }
++                  if (dialogContext.mounted) {
++                    setDialogState(() => copyFeedback = feedback);
++                  }
++                },
++                child: const Text('COPIA LINK REVOLUT'),
++              ),
++              TextButton(
++                key: const ValueKey('native-support-close'),
++                onPressed: () => Navigator.of(dialogContext).pop(),
++                child: const Text('CHIUDI'),
++              ),
++            ],
 +          ),
-+          title: const Text('Sostieni dōtapp'),
-+          content: const Text(
-+            'Se dōtapp ti è utile e vuoi sostenere il progetto, puoi farlo qui. Grazie per il tuo supporto 💜',
-+          ),
-+          actions: [
-+            FilledButton(
-+              key: const ValueKey('native-support-link'),
-+              onPressed: _openSupportLink,
-+              child: const Text('SOSTIENI DŌTAPP'),
-+            ),
-+            TextButton(
-+              key: const ValueKey('native-support-close'),
-+              onPressed: () => Navigator.of(dialogContext).pop(),
-+              child: const Text('CHIUDI'),
-+            ),
-+          ],
 +        ),
 +      ),
 +    );

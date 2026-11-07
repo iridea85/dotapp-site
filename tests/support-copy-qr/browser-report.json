@@ -1,0 +1,138 @@
+{
+  "baseline": "70d357374ca6efed60f9857444af738960f5875f",
+  "baselineRecompiledExactSHA256": "ca3821a637578fa3f1b921c503970ca650b10b9cb4ad65fad07f4736948fec9a",
+  "compiledCandidateSHA256": "c0d9691a61cbefa23067a65cf9e11d1fe9ba791a56f6e9a703556203122ddebb",
+  "nativeTests": {
+    "passed": 10,
+    "failed": 0,
+    "widths": [
+      320,
+      390,
+      430,
+      768
+    ],
+    "shortViewport": [
+      320,
+      568
+    ]
+  },
+  "realWeb": {
+    "environment": "Chrome desktop, real compiled Flutter web on isolated owner-private HTTPS; 390px app iframe",
+    "dialog": "PASS",
+    "heartHeaderAndLaunchCallback": "byte-identical source outside dialog",
+    "clipboard": {
+      "PASS": true,
+      "expected": "https://revolut.me/irideaf",
+      "actual": "https://revolut.me/irideaf",
+      "readMethod": "Independent native navigator.clipboard.readText action on the HTTPS QA harness; no clipboard mocks",
+      "feedback": "Link Revolut copiato"
+    },
+    "qr": {
+      "PASS": true,
+      "renderer": "Flutter CustomPainter, fixed 33x33 matrix with quiet zone",
+      "actualWebScreenshot": "web-dialog-qr.jpg",
+      "decoder": "zxing-cpp 2.3.0",
+      "decoded": "https://revolut.me/irideaf"
+    },
+    "existingSupportButton": {
+      "present": true,
+      "mode": "externalApplication",
+      "target": "_blank",
+      "sourceUnchanged": true,
+      "actualWebLaunch": "Revolut tab was observed in HTTPS predecessor using the same unchanged launch function"
+    },
+    "dataProof": [
+      {
+        "key": "doterra_inventory_v2",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_inventory_v2",
+        "identical": true
+      },
+      {
+        "key": "oils_inventory_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.oils_inventory_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_catalog_shopping_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_catalog_shopping_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_custom_products_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_custom_products_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_personal_recipes_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_personal_recipes_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_inventory_order_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_inventory_order_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_bottom_nav_order_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_bottom_nav_order_v1",
+        "identical": true
+      },
+      {
+        "key": "doterra_app_messages_read_v1",
+        "identical": true
+      },
+      {
+        "key": "flutter.doterra_app_messages_read_v1",
+        "identical": true
+      },
+      {
+        "key": "DOTAPP_BACKUP_V1",
+        "identical": true
+      },
+      {
+        "key": "flutter.DOTAPP_BACKUP_V1",
+        "identical": true
+      },
+      {
+        "key": "test_preference",
+        "identical": true
+      },
+      {
+        "key": "flutter.test_preference",
+        "identical": true
+      },
+      {
+        "key": "IndexedDB",
+        "identical": true
+      }
+    ]
+  },
+  "backupCodeAndCatalog": "unchanged files",
+  "productionDeployed": false,
+  "serviceWorkerAndUpdaterChanged": false,
+  "blocker": "User forbids modifying service worker; the current worker integrity-pins the original compiled bundle. Release-metadata proposal is separate and unapplied.",
+  "privateQA": "https://dotapp-support-copy-qr-20261107.iridea85.chatgpt.site/test-dialog",
+  "privateQACommit": "c29d6ef74263f6bb41de4565167d4885c82148cd",
+  "physicalPhone": "Not tested; user-required real web build tested in browser"
+}
