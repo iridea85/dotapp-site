@@ -92,7 +92,7 @@ index 1d7ed03..95e6015 100644
 +  Future<void> _openSupportLink() async {
 +    final opened = await launchUrl(
 +      Uri.parse('https://revolut.me/irideaf'),
-+      mode: LaunchMode.externalApplication,
++      mode: LaunchMode.platformDefault,
 +      webOnlyWindowName: '_blank',
 +    );
 +    if (!opened && mounted) {
