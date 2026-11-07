@@ -1,0 +1,238 @@
+{
+  "productionBaseline": "0870d0c074c74dc2121c057e837f81b104482928",
+  "release": "support-heart-native-20261107-r9",
+  "environment": "Real Chrome browser, compiled Flutter web release, 390px viewport, synthetic data",
+  "baselineReproduction": {
+    "directHeartBlocked": true,
+    "emptyNewsBackdrop": 1,
+    "settingsHitAreaOpenedSupport": true
+  },
+  "firstFive": [
+    {
+      "tap": 1,
+      "support": true,
+      "settings": false
+    },
+    {
+      "tap": 2,
+      "support": true,
+      "settings": false
+    },
+    {
+      "tap": 3,
+      "support": true,
+      "settings": false
+    },
+    {
+      "tap": 4,
+      "support": true,
+      "settings": false
+    },
+    {
+      "tap": 5,
+      "support": true,
+      "settings": false
+    }
+  ],
+  "perScreen": [
+    {
+      "screen": "Home",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Catalogo",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Scorta",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Lista spesa",
+      "heart": "PASS",
+      "settings": "PASS"
+    },
+    {
+      "screen": "Ricettario",
+      "heart": "PASS",
+      "settings": "PASS"
+    }
+  ],
+  "events": [
+    {
+      "section": "Home",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Home",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Home",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Home",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Home",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Home",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Catalogo",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Catalogo",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Scorta",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Scorta",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Lista spesa",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Lista spesa",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Ricettario",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    },
+    {
+      "section": "Ricettario",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Scorta",
+      "opened": "settings",
+      "supportAlsoOpen": false
+    },
+    {
+      "section": "Scorta",
+      "opened": "support",
+      "settingsAlreadyOpen": false
+    }
+  ],
+  "dataStatus": "DATI PASS: 21/21 identici",
+  "storageProof": [
+    {
+      "key": "doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "flutter.DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "test_preference",
+      "identical": true
+    },
+    {
+      "key": "flutter.test_preference",
+      "identical": true
+    },
+    {
+      "key": "IndexedDB",
+      "identical": true
+    }
+  ],
+  "supportUrl": "https://revolut.me/irideaf",
+  "orphanMessageBackdrops": 0,
+  "settingsBoundaryRegression": "PASS",
+  "headerArtwork": "Unchanged; 36px button, 20px favorite_rounded",
+  "physicalPhone": "Not tested"
+}

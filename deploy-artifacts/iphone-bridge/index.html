@@ -34,7 +34,7 @@
     <strong class="dotapp-splash-name">dōtapp</strong>
   </div>
   <script>window.addEventListener('flutter-first-frame', () => document.getElementById('dotapp-launch')?.remove(), {once:true});</script>
-  <script>window.DOTAPP_RELEASE={"release": "support-heart-native-20261107-r8"};</script>
+  <script>window.DOTAPP_RELEASE={"release": "support-heart-native-20261107-r9"};</script>
   <script src="dotapp-update-core.js"></script>
   <script src="dotapp-updates.js" defer></script>
   <script src="pwa_install_nav_v3.js?v=dotapp-nav-v3"></script>
@@ -225,6 +225,7 @@
       return [...lines.values()].flatMap(x => Array(x.count).fill(x.text)).join('\n');
     }
   </script>
+  <script src="support-heart.js"></script>
   <script>
 /* Independent startup guard: installation UX must never own the Flutter lifecycle. */
 (() => {
@@ -249,7 +250,7 @@
       const splash=document.getElementById('dotapp-launch');if(splash){splash.replaceChildren();const t=document.createElement('p');t.textContent='Completa il ripristino dei dati precedenti.';splash.append(t);const b=document.createElement('button');b.textContent='RIPRISTINA DATI PRECEDENTI';b.onclick=()=>w.dotappBackup?.open();splash.append(b);}return;
     }}catch(_){}
     started=true;
-    try{const s=document.createElement('script');s.src='flutter_bootstrap_support_header_v4.js?v=support-heart-native-20261107-r8';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
+    try{const s=document.createElement('script');s.src='flutter_bootstrap_support_header_v4.js?v=support-heart-native-20261107-r9';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
   };
   // A missing, blocked or broken migration script cannot leave the normal app at the splash.
   function fallback(){if(!w.dotappMigrationManaged)w.dotappStartApplication();}
@@ -267,7 +268,6 @@
   <script src="installation_intro_v10.js" defer></script>
   <script src="voice_bridge_assistant_v8.js"></script>
   <script src="app_messages.js" defer></script>
-  <script src="support-heart.js" defer></script>
   <script>
   /* One-shot persistence for release notes/news popups.
      No inventory, recipe or personal-data keys are read or changed. */
@@ -293,20 +293,27 @@
     function alreadySeen() {
       try { return localStorage.getItem(seenKey()) === '1'; } catch (_) { return false; }
     }
+    function closeNewsDialog(candidate) {
+      // A message dialog owns its backdrop. Removing only its box blocks Flutter taps.
+      const backdrop = candidate.classList.contains('scorta-message-box')
+        ? candidate.parentElement : null;
+      if (backdrop?.classList.contains('scorta-message-shade')) backdrop.remove();
+      else candidate.remove();
+    }
     function handle(root) {
       if (!(root instanceof Element)) return;
       const candidates = root.matches?.('[role="dialog"],[role="alertdialog"],[class*="modal"],[class*="popup"],[id*="modal"],[id*="popup"]')
         ? [root] : [...root.querySelectorAll?.('[role="dialog"],[role="alertdialog"],[class*="modal"],[class*="popup"],[id*="modal"],[id*="popup"]') || []];
       for (const candidate of candidates) {
         if (!isNews(candidate.textContent)) continue;
-        if (alreadySeen()) { candidate.remove(); continue; }
+        if (alreadySeen()) { closeNewsDialog(candidate); continue; }
         if (candidate.dataset.dotappNewsBound === '1') continue;
         candidate.dataset.dotappNewsBound = '1';
         candidate.addEventListener('click', event => {
           const control = event.target.closest?.('button,[role="button"],[data-close],[aria-label*="chiud" i],[title*="chiud" i]');
           if (!control) return;
           remember();
-          queueMicrotask(() => candidate.remove());
+          queueMicrotask(() => closeNewsDialog(candidate));
         }, true);
       }
     }

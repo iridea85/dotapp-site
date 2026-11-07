@@ -4,5 +4,7 @@ import 'dart:js_interop';
 external void _open();
 
 class SupportBridge {
-  static void open() => _open();
+  static void open() {
+    _open();
+  }
 }
