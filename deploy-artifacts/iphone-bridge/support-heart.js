@@ -60,23 +60,30 @@
     if (typeof x !== 'number' || typeof y !== 'number') return false;
     // Native AppBar actions: 36px heart immediately before the 48px Settings gear.
     // Reserve the gear hitbox completely; use only the heart's own slot.
-    const rightEdgeOfHeart = innerWidth - 48;
-    const leftEdgeOfHeart = rightEdgeOfHeart - 36;
-    const appBarTop = 30;
-    const appBarBottom = 100;
+    // AppBar layout: right padding ~20px, 48px Settings, then 36px heart.
+    // Therefore heart occupies [width-104, width-68].
+    const leftEdgeOfHeart = innerWidth - 104;
+    const rightEdgeOfHeart = innerWidth - 68;
+    const appBarTop = 16;
+    const appBarBottom = 86;
     return x >= leftEdgeOfHeart && x < rightEdgeOfHeart && y >= appBarTop && y <= appBarBottom;
   }
 
   window.addEventListener('pointerdown', event => {
     heartPointerDown = inNativeHeartSlot(event);
-  }, {capture:true, passive:true});
+    if (!heartPointerDown) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, {capture:true, passive:false});
 
   window.addEventListener('pointerup', event => {
     const activate = heartPointerDown && inNativeHeartSlot(event);
     heartPointerDown = false;
     if (!activate) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
     setTimeout(openDialog, 0);
-  }, {capture:true, passive:true});
+  }, {capture:true, passive:false});
 
   window.addEventListener('pointercancel', () => { heartPointerDown = false; }, {capture:true, passive:true});
 
