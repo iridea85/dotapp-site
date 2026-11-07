@@ -1,5 +1,6 @@
 name: Deploy approved dōtapp root build
 # release: support-heart-20261107-r1
+# integrity-fix: support-heart-20261107-r1
 on:
   push:
     branches: [main]
