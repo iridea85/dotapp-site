@@ -36,5 +36,33 @@
     document.body.append(shade);
   }
 
+
+  // Production fallback for the native Flutter heart.
+  // No visual overlay: this only forwards a tap in the heart's header slot
+  // to the existing support panel if the compiled web bridge does not fire.
+  function isNativeHeartTarget(event) {
+    const path = typeof event.composedPath === 'function' ? event.composedPath() : [];
+    for (const node of path) {
+      if (!(node instanceof Element)) continue;
+      const label = [node.getAttribute?.('aria-label'), node.getAttribute?.('title'), node.textContent]
+        .filter(Boolean).join(' ').toLocaleLowerCase('it-IT');
+      if (label.includes('sostieni dōtapp') || label.includes('sostieni dotapp')) return true;
+    }
+    const x = event.clientX, y = event.clientY;
+    if (typeof x !== 'number' || typeof y !== 'number') return false;
+    // Native AppBar row = 36px heart immediately before 48px Settings.
+    // Keep a small tolerance without touching the Settings hitbox.
+    const left = innerWidth - 92;
+    const right = innerWidth - 50;
+    const top = 28;
+    const bottom = 104;
+    return x >= left && x <= right && y >= top && y <= bottom;
+  }
+
+  window.addEventListener('click', event => {
+    if (!isNativeHeartTarget(event)) return;
+    openDialog();
+  }, true);
+
   window.dotappOpenSupport = openDialog;
 })();
