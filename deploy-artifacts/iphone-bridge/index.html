@@ -34,7 +34,7 @@
     <strong class="dotapp-splash-name">dōtapp</strong>
   </div>
   <script>window.addEventListener('flutter-first-frame', () => document.getElementById('dotapp-launch')?.remove(), {once:true});</script>
-  <script>window.DOTAPP_RELEASE={"release": "support-flutter-dialog-20261107-r10"};</script>
+  <script>window.DOTAPP_RELEASE={"release": "support-copy-qr-20261107-r11"};</script>
   <script src="dotapp-update-core.js"></script>
   <script src="dotapp-updates.js" defer></script>
   <script src="pwa_install_nav_v3.js?v=dotapp-nav-v3"></script>
@@ -249,7 +249,7 @@
       const splash=document.getElementById('dotapp-launch');if(splash){splash.replaceChildren();const t=document.createElement('p');t.textContent='Completa il ripristino dei dati precedenti.';splash.append(t);const b=document.createElement('button');b.textContent='RIPRISTINA DATI PRECEDENTI';b.onclick=()=>w.dotappBackup?.open();splash.append(b);}return;
     }}catch(_){}
     started=true;
-    try{const s=document.createElement('script');s.src='flutter_bootstrap_support_header_v4.js?v=support-flutter-dialog-20261107-r10';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
+    try{const s=document.createElement('script');s.src='flutter_bootstrap_support_header_v4.js?v=support-copy-qr-20261107-r11';s.async=true;s.onerror=loadError;document.body.append(s);timer=w.setTimeout(loadError,20000);}catch(_){started=false;loadError();}
   };
   // A missing, blocked or broken migration script cannot leave the normal app at the splash.
   function fallback(){if(!w.dotappMigrationManaged)w.dotappStartApplication();}
