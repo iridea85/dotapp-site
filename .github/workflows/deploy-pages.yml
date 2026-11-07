@@ -60,6 +60,26 @@ jobs:
               assert (root / name).stat().st_size > 0
           print('Approved root build verified: 37 files; manifest, worker and backup PASS')
           PY
+      - name: Diagnose compiled support bridge
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat deploy-artifacts/native-support-header/main.dart.js.gz.part-* > /tmp/support-main.js.gz
+          gzip -dc /tmp/support-main.js.gz > /tmp/support-main.js
+          echo "=== dotappOpenSupport refs ==="
+          grep -ao 'dotappOpenSupport' /tmp/support-main.js | wc -l || true
+          echo "=== support/settings symbols ==="
+          grep -aoE 'dotappOpenSupport|dotappOpenSettings|header-support-heart|assistant-settings-menu|SupportBridge|SettingsBridge' /tmp/support-main.js | sort | uniq -c || true
+          echo "=== context around dotappOpenSupport ==="
+          python3 - <<'PYDIAG'
+          from pathlib import Path
+          s=Path('/tmp/support-main.js').read_text(errors='ignore')
+          needle='dotappOpenSupport'
+          i=s.find(needle)
+          print('FOUND_AT', i)
+          if i >= 0:
+              print(s[max(0,i-600):i+900])
+          PYDIAG
       - name: Publish immutable iPhone bridge candidate 66c6f462
         shell: bash
         run: |
