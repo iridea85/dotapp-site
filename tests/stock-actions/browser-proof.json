@@ -1,0 +1,116 @@
+{
+  "rects": [
+    {
+      "label": "Condividi",
+      "rect": {
+        "bottom": 224,
+        "height": 44,
+        "left": 12,
+        "right": 191,
+        "top": 180,
+        "width": 179,
+        "x": 12,
+        "y": 180
+      }
+    },
+    {
+      "label": "Seleziona",
+      "rect": {
+        "bottom": 224,
+        "height": 44,
+        "left": 199,
+        "right": 378,
+        "top": 180,
+        "width": 179,
+        "x": 199,
+        "y": 180
+      }
+    }
+  ],
+  "data": [
+    {
+      "key": "doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "flutter.DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "test_preference",
+      "identical": true
+    },
+    {
+      "key": "flutter.test_preference",
+      "identical": true
+    },
+    {
+      "key": "IndexedDB",
+      "identical": true
+    }
+  ]
+}

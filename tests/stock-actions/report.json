@@ -1,0 +1,34 @@
+{
+  "baseline": "300360bcb54b6ec472dd21a402a3ed925a3bada8",
+  "release": "stock-actions-20261112-r12",
+  "layout": "Summary, full-width search, equal share/select action row, category, state, product grid",
+  "mobile_widget_widths": [
+    320,
+    360,
+    390,
+    430
+  ],
+  "native_tests": "6/6 PASS (layout, interactions, unchanged preferences, backup compatibility)",
+  "real_web": "Compiled release build in Chrome, 390px iframe, synthetic data only",
+  "share": "PASS: existing options and inventory text; native Clipboard dispatch covered with platform mock",
+  "select": "PASS: all items selected, count updated, exit without edits",
+  "search": "PASS: Lavanda search excludes Incenso",
+  "category": "PASS: Benessere gives empty result; Tutti restores oils",
+  "state": "PASS: Aperti shows only Lavanda; Tutti restores list",
+  "data": "21/21 raw localStorage and IndexedDB fixture values identical; production data never accessed",
+  "actions_px": {
+    "width_each": 179,
+    "height_each": 44,
+    "gap": 8
+  },
+  "scope": "Only _inventoryView layout; all other source methods byte-identical",
+  "runtime_changed_files": [
+    "dotapp-release.json",
+    "flutter_service_worker.js",
+    "index.html",
+    "main_support_header_v4.dart.js"
+  ],
+  "worker": "Only release IDs and SHA256 asset pins; caching/update logic byte-identical",
+  "rollback": "rollback/pre-stock-actions-20261112",
+  "compiled_sha256": "ec98dddef49fff61201352f022bf840cc0d7e615c56bc6732b641f5cfd57708b"
+}

@@ -1,0 +1,94 @@
+--- a/flutter_app/lib/main.dart
++++ b/flutter_app/lib/main.dart
+@@ -2622,15 +2622,17 @@
+             ),
+           ),
+         ),
+-        const SizedBox(height: 4),
+-        Align(alignment: Alignment.centerRight, child: _inventoryToolbarButton(
+-          key: const ValueKey('inventory-share'), icon: Icons.share_outlined,
+-          label: 'Condividi', onPressed: _showShare)),
+-        const SizedBox(height: 4),
+-        if (_inventorySelecting) _inventorySelectionToolbar(),
+-        if (_items.isEmpty)
+-          _emptyOwnedInventory()
+-        else ...[
++        const SizedBox(height: 6),
++        if (_items.isEmpty) ...[
++          _inventoryToolbarButton(
++            key: const ValueKey('inventory-share'),
++            icon: Icons.share_outlined,
++            label: 'Condividi',
++            onPressed: _showShare,
++          ),
++          if (_inventorySelecting) _inventorySelectionToolbar(),
++          _emptyOwnedInventory(),
++        ] else ...[
+           TextField(
+             key: const ValueKey('inventory-search'),
+             controller: _inventorySearchController,
+@@ -2648,6 +2650,32 @@
+               contentPadding: EdgeInsets.symmetric(vertical: 12),
+             ),
+           ),
++          const SizedBox(height: 6),
++          Row(
++            key: const ValueKey('inventory-actions'),
++            children: [
++              Expanded(
++                child: _inventoryToolbarButton(
++                  key: const ValueKey('inventory-share'),
++                  icon: Icons.share_outlined,
++                  label: 'Condividi',
++                  onPressed: _showShare,
++                ),
++              ),
++              if (!_inventorySelecting) ...[
++                const SizedBox(width: 8),
++                Expanded(
++                  child: _inventoryToolbarButton(
++                    key: const ValueKey('inventory-select'),
++                    icon: Icons.check_rounded,
++                    label: 'Seleziona',
++                    onPressed: () => setState(() => _inventorySelecting = true),
++                  ),
++                ),
++              ],
++            ],
++          ),
++          if (_inventorySelecting) _inventorySelectionToolbar(),
+           const SizedBox(height: 6),
+           const Text(
+             'CATEGORIA',
+@@ -2680,30 +2708,7 @@
+               ],
+             ),
+           ),
+-          if (!_inventorySelecting) ...[
+-            const SizedBox(height: 2),
+-            Align(
+-              alignment: Alignment.centerRight,
+-              child: TextButton.icon(
+-                key: const ValueKey('inventory-select'),
+-                onPressed: () => setState(() => _inventorySelecting = true),
+-                icon: const Icon(Icons.check_rounded, size: 16),
+-                label: const Text('Seleziona'),
+-                style: TextButton.styleFrom(
+-                  foregroundColor: const Color(0xFF6E5578),
+-                  backgroundColor: const Color(0xFFF8F3FA),
+-                  side: const BorderSide(color: Color(0xFFD9C9DF)),
+-                  shape: const StadiumBorder(),
+-                  minimumSize: const Size(0, 32),
+-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+-                  textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+-                ),
+-              ),
+-            ),
+-            const SizedBox(height: 4),
+-          ] else
+-            const SizedBox(height: 8),
++          const SizedBox(height: 8),
+           if (list.isEmpty)
+             _emptyInventoryResult()
+           else

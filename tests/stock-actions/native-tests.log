@@ -1,0 +1,8 @@
+00:00 +0: loading /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart
+00:00 +0: /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart: Balanced mobile actions at width 320.0
+00:00 +1: /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart: Balanced mobile actions at width 320.0
+00:03 +2: /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart: Balanced mobile actions at width 360.0
+00:04 +3: /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart: Balanced mobile actions at width 390.0
+00:05 +4: /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart: Balanced mobile actions at width 430.0
+00:05 +5: /workspace/scratch/ebdb9f1b13f6/dotapp-stock-layout/flutter_app/test/stock_actions_layout_test.dart: Share, select, search and both filter groups preserve stored data
+00:10 +6: All tests passed!

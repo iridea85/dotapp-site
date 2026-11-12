@@ -1,0 +1,16 @@
+{
+  "production_baseline": "300360bcb54b6ec472dd21a402a3ed925a3bada8",
+  "source_baseline": "fd9ebcfd13d6282060ccd5c52317bb0312451c82",
+  "apply_patches_in_order": [
+    "header-source.patch",
+    "stock-actions-source.patch"
+  ],
+  "pubspec": "unchanged pinned native-support-header/pubspec.yaml and pubspec.lock",
+  "flutter": "3.35.1",
+  "build": "flutter build web --release --no-pub --no-tree-shake-icons",
+  "compiled_sha256": "ec98dddef49fff61201352f022bf840cc0d7e615c56bc6732b641f5cfd57708b",
+  "release": "stock-actions-20261112-r12",
+  "scope": "Only _inventoryView layout; other Dart methods and libraries unchanged",
+  "worker_logic_unchanged": true,
+  "rollback": "rollback/pre-stock-actions-20261112"
+}
