@@ -1,0 +1,38 @@
+{
+  "baseline": "ccbf4af389182a6cb4a81646ee9cd74e6e197c53",
+  "release": "stock-micro-20261112-r13",
+  "style_changes": {
+    "button_height": {
+      "before": 44,
+      "after": 40
+    },
+    "gap_before_category": {
+      "before": 6,
+      "after": 2
+    }
+  },
+  "source_scope": "Only these two numeric style values changed; all functions, icons, text, colors, borders, widths, horizontal gap, and widget order unchanged",
+  "mobile_widths": [
+    320,
+    360,
+    390,
+    430
+  ],
+  "native_tests": "5/5 PASS",
+  "real_web": "Compiled release in Chrome, 390px iframe, synthetic fixtures only",
+  "share": "PASS: original menu opens",
+  "select": "PASS: 2 selected, existing actions present, selection exited without edits",
+  "touch_targets": "40px height, 179px width each at 390px; native taps passed at all four widths",
+  "overflow": "none",
+  "category_state": "unchanged source and widgets; existing filter behavior PASS in widget test",
+  "data": "21/21 values unchanged including localStorage and IndexedDB fixtures; real data not accessed",
+  "worker": "Only release IDs and hashes updated; logic byte-identical, updater unchanged",
+  "rollback": "rollback/pre-stock-micro-20261112",
+  "runtime_changed_files": [
+    "dotapp-release.json",
+    "flutter_service_worker.js",
+    "index.html",
+    "main_support_header_v4.dart.js"
+  ],
+  "compiled_sha256": "8f5a17d9a6acd12dc53ece1cf9c2704bca9d7249a2c060d650bba43b1deb0194"
+}

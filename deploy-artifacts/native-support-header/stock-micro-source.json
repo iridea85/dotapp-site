@@ -1,0 +1,16 @@
+{
+  "production_baseline": "ccbf4af389182a6cb4a81646ee9cd74e6e197c53",
+  "source_baseline": "fd9ebcfd13d6282060ccd5c52317bb0312451c82",
+  "apply_patches_in_order": [
+    "header-source.patch",
+    "stock-actions-source.patch",
+    "stock-micro-source.patch"
+  ],
+  "flutter": "3.35.1",
+  "build": "flutter build web --release --no-pub --no-tree-shake-icons",
+  "compiled_sha256": "8f5a17d9a6acd12dc53ece1cf9c2704bca9d7249a2c060d650bba43b1deb0194",
+  "release": "stock-micro-20261112-r13",
+  "scope": "Two numeric style values only: button height 44 to 40; category gap 6 to 2",
+  "worker_logic_unchanged": true,
+  "rollback": "rollback/pre-stock-micro-20261112"
+}
