@@ -1,0 +1,185 @@
+{
+  "metrics": [
+    {
+      "width": 390,
+      "scale": 100,
+      "buttons": [
+        {
+          "height": 64,
+          "label": "BACKUP E TRASFERIMENTO DATI",
+          "overflow": false,
+          "width": 309
+        },
+        {
+          "height": 64,
+          "label": "dōtapp è installato",
+          "overflow": false,
+          "width": 309
+        },
+        {
+          "height": 64,
+          "label": "ORDINE MENU INFERIORE",
+          "overflow": false,
+          "width": 309
+        },
+        {
+          "height": 64,
+          "label": "Messaggi App",
+          "overflow": false,
+          "width": 309
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "scale": 150,
+      "buttons": [
+        {
+          "height": 107.03125,
+          "label": "BACKUP E TRASFERIMENTO DATI",
+          "labelOverflow": false,
+          "overflow": false,
+          "width": 247
+        },
+        {
+          "height": 107.03125,
+          "label": "dōtapp è installato",
+          "labelOverflow": false,
+          "overflow": false,
+          "width": 247
+        },
+        {
+          "height": 107.03125,
+          "label": "ORDINE MENU INFERIORE",
+          "labelOverflow": false,
+          "overflow": false,
+          "width": 247
+        },
+        {
+          "height": 107.03125,
+          "label": "Messaggi App",
+          "labelOverflow": false,
+          "overflow": false,
+          "width": 247
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "scale": 100,
+      "buttons": [
+        {
+          "height": 64,
+          "label": "BACKUP E TRASFERIMENTO DATI",
+          "overflow": false,
+          "width": 247
+        },
+        {
+          "height": 64,
+          "label": "dōtapp è installato",
+          "overflow": false,
+          "width": 247
+        },
+        {
+          "height": 64,
+          "label": "ORDINE MENU INFERIORE",
+          "overflow": false,
+          "width": 247
+        },
+        {
+          "height": 64,
+          "label": "Messaggi App",
+          "overflow": false,
+          "width": 247
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "key": "doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "flutter.DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "test_preference",
+      "identical": true
+    },
+    {
+      "key": "flutter.test_preference",
+      "identical": true
+    },
+    {
+      "key": "IndexedDB",
+      "identical": true
+    }
+  ],
+  "report": "SEGNALAZIONE SIMULATA: {\"category\":\"Altro\",\"description\":\"Collaudo grafico fittizio, nessun invio reale.\",\"app_version\":\"v27\",\"device_info\":\"Desktop · Chrome\"}"
+}

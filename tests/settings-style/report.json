@@ -1,0 +1,26 @@
+{
+  "baseline": "2308c98da2cbfea17309944f975283f53b235058",
+  "release": "settings-style-20261112-r14",
+  "scope": "Settings presentation only: scoped CSS, grouping markup, decorative SVGs and label spans on existing button elements",
+  "buttons": "All four 64px high at 390px, equal width and typography; grid rows adapt equally to larger text",
+  "mobile_tests": "390px 100%, 320px 100% and 150% PASS: no clipping or overflow",
+  "backup": "PASS: existing Backup e trasferimento dati dialog with export/import actions opens; no restore or data mutation performed",
+  "installation": "PASS: unchanged guide opens in browser mode; installed mode rendered as disabled green status, state simulated only in QA harness",
+  "nav_order": "PASS: existing reorder dialog, all four entries, reset and Done present; closed without changing order",
+  "messages": "PASS: real existing renderer opens and closes; GET response mocked empty in private QA to isolate release-note guard",
+  "report": "PASS: original required fields, category and description payload, v27/device fields unchanged; HTTP201 mocked by QA harness, status and reset verified; no real report sent",
+  "admin": "PASS: existing protected Area Admin opens with Email Admin, Password Admin and ACCEDI COME ADMIN; no authentication or admin mutation attempted",
+  "callbacks": "All event handlers and report request code byte-identical to baseline",
+  "support": "Existing support markup and link unchanged",
+  "data": "21/21 synthetic localStorage/IndexedDB fixture values unchanged; real user data not accessed",
+  "compiled_main": "byte-identical to production",
+  "worker": "Only release IDs and SHA256 pins updated; logic and CORE list byte-identical",
+  "updater": "all files unchanged",
+  "runtime_changed_files": [
+    "admin_preview_install_intro_v10.js",
+    "dotapp-release.json",
+    "flutter_service_worker.js",
+    "index.html"
+  ],
+  "rollback": "rollback/pre-settings-style-20261112"
+}
