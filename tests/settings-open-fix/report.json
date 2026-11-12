@@ -1,0 +1,42 @@
+{
+  "baseline": "9a06b1f8e869b936207229366dbb2b5b7404d648",
+  "release": "settings-open-20261112-r15",
+  "scope": "Bind original action handlers before optional modules/styling; guard optional modules independently; render button children with removeChild/appendChild instead of replaceChildren. CSS, icons, labels, layout and existing callbacks unchanged.",
+  "diagnosis": {
+    "confirmed": "In baseline optional mountSettings and styleSettings run unguarded before action handlers; a thrown error aborts handler setup. New styling depends on button.replaceChildren.",
+    "phone_specific_exception": "NOT CONFIRMED: no physical Android device available. Baseline native desktop click opens production; do not present a desktop automation pointer error as the phone cause.",
+    "synthetic_pointer_error": "DOM-synthetic pointer injection raises null pointer-kind errors in compiled Flutter before showPanel; isolated from application bug. Actual desktop mouse input works.",
+    "recovery_tests": [
+      "Missing HTMLButtonElement.replaceChildren: PASS, design renders",
+      "Throwing optional installation mount: PASS, settings opens and Backup is usable; error logged locally"
+    ]
+  },
+  "true_callback_test": "Native OS mouse on real Flutter gear, SettingsBridge JS interop, existing showPanel. No direct open function call, no overlays or hitboxes.",
+  "cycles": "10/10 PASS; each verified visible then closed",
+  "screens": {
+    "Catalogo": "PASS",
+    "Scorta": "PASS",
+    "Lista spesa": "PASS",
+    "Ricettario": "PASS"
+  },
+  "functions": {
+    "backup": "PASS: existing export/import dialog opened; no import/export data mutation",
+    "nav_order": "PASS: original reorder dialog with four entries, closed with Done without edits",
+    "messages": "PASS: original messages dialog opens; empty messages GET response mocked only in private QA",
+    "report": "PASS: original payload/status/reset, HTTP201 mocked, no real report sent",
+    "admin": "PASS: protected Area Admin login screen opens; no credentials submitted"
+  },
+  "heart": "PASS: native mouse opens Flutter support dialog only, settings absent",
+  "data": "21/21 synthetic fixture values unchanged including quantities, thresholds, notes, shopping, recipes, backup and IndexedDB; real data not touched",
+  "design": "unchanged CSS and SVG paths, confirmed native screenshot",
+  "worker": "Only release and SHA256 metadata; logic and CORE unchanged",
+  "updater": "unchanged",
+  "flutter_main": "unchanged",
+  "rollback": "rollback/pre-settings-open-fix-20261112",
+  "runtime_changed_files": [
+    "admin_preview_install_intro_v10.js",
+    "dotapp-release.json",
+    "flutter_service_worker.js",
+    "index.html"
+  ]
+}

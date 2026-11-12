@@ -32,7 +32,8 @@
       const text = document.createElement('span'); text.className = 'settings-label'; text.textContent = label;
       const end = document.createElement('span'); end.className = 'settings-chevron'; end.setAttribute('aria-hidden','true');
       end.innerHTML = installed ? '' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>';
-      button.replaceChildren(mark, text, end);
+      while (button.firstChild) button.removeChild(button.firstChild);
+      button.appendChild(mark); button.appendChild(text); button.appendChild(end);
     }
   }
 
@@ -97,10 +98,6 @@
       </details>
       <p data-status role="status" style="font-size:14px;color:#60476b;min-height:20px"></p></section>`;
     document.body.append(shade);
-    window.dotappMigration?.mountSettings(shade);
-    window.dotappInstallationIntro?.mountSettings(shade);
-    window.dotappUpdates?.mountSettings(shade);
-    styleSettings(shade);
     const status = shade.querySelector('[data-status]');
     shade.querySelector('[data-backup]').onclick = () => window.dotappBackup?.open();
     shade.querySelector('[data-admin]').onclick = () => {
@@ -132,6 +129,16 @@
       } catch (error) { status.textContent = error.message || 'Invio non riuscito.'; }
       finally { button.disabled = false; }
     };
+    // Optional decorations must never prevent opening or binding the settings actions.
+    for (const [name, mount] of [
+      ['migration', () => window.dotappMigration?.mountSettings(shade)],
+      ['installation', () => window.dotappInstallationIntro?.mountSettings(shade)],
+      ['updates', () => window.dotappUpdates?.mountSettings(shade)],
+      ['style', () => styleSettings(shade)],
+    ]) {
+      try { mount(); }
+      catch (error) { console.error('[dōtapp settings] ' + name, error); }
+    }
   }
 
   window.scortaOpenSettings = showPanel;

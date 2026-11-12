@@ -1,0 +1,164 @@
+{
+  "cycles": [
+    {
+      "cycle": 1,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 2,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 3,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 4,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 5,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 6,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 7,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 8,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 9,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    },
+    {
+      "cycle": 10,
+      "open": true,
+      "method": "native desktop mouse, Flutter gear"
+    }
+  ],
+  "screens": [
+    {
+      "screen": "Catalogo",
+      "pass": true
+    },
+    {
+      "screen": "Scorta",
+      "pass": true
+    },
+    {
+      "screen": "Lista spesa",
+      "pass": true
+    },
+    {
+      "screen": "Ricettario",
+      "pass": true
+    }
+  ],
+  "heart": {
+    "supportOnly": true
+  },
+  "data": [
+    {
+      "key": "doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_v2",
+      "identical": true
+    },
+    {
+      "key": "oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.oils_inventory_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_catalog_shopping_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_custom_products_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_personal_recipes_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_inventory_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_bottom_nav_order_v1",
+      "identical": true
+    },
+    {
+      "key": "doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "flutter.doterra_app_messages_read_v1",
+      "identical": true
+    },
+    {
+      "key": "DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "flutter.DOTAPP_BACKUP_V1",
+      "identical": true
+    },
+    {
+      "key": "test_preference",
+      "identical": true
+    },
+    {
+      "key": "flutter.test_preference",
+      "identical": true
+    },
+    {
+      "key": "IndexedDB",
+      "identical": true
+    }
+  ],
+  "compatPass": true,
+  "mountPass": true,
+  "report": "SEGNALAZIONE SIMULATA: {\"category\":\"Funzionamento\",\"description\":\"Collaudo fittizio apertura Impostazioni, senza invio reale.\",\"app_version\":\"v27\",\"device_info\":\"Desktop · Chrome\"}"
+}
